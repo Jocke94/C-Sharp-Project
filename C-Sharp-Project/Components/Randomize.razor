@@ -1,2 +1,19 @@
-﻿<h3>random number is: @MyRandom </h3>
+﻿<h3>random number is: @MyRandom</h3>
 
+<div class="container">
+	<div class="row">
+		
+<button class="alert" @onclick="GenerateRandomNumbers"></button>
+@if (randomNumbers.Count > 0)
+		{
+			@for (int i= 0; i < randomNumbers.Count; i++)
+				
+			{
+				<button class="round-button">@randomNumbers[i]</button>
+			}
+		}
+		
+</div>
+</div>
+
+<br />
