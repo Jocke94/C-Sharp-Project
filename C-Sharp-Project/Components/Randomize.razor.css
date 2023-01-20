@@ -7,9 +7,24 @@
     border-radius: 25px;
     background-color: olivedrab;
     margin: 5px 5px;
+   
 }
 
 .container{
 padding:40px;
 
+}
+
+.btn {
+    height: 45px;
+    width: 80px;
+    background-color: orange;
+    position: static;
+}
+
+.keno{
+    font-size: 14px;
+    letter-spacing: 2px;
+    
+    
 }
