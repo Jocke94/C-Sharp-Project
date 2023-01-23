@@ -8,14 +8,17 @@
     appearance: none;
     outline: none;
     cursor: pointer;
+    transition: .5s;
+    z-index: 1;
+  
 }
 
 .keno-button:checked {
     background-color: orange;
 }
-
-label {
-    width: 20px;
-    margin:0 3px 0;
-  
+.keno-button:hover {
+    transform: rotateY(180deg);
+    box-shadow: 0 0 5px orange;
 }
+
+

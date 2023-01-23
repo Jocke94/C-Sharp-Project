@@ -3,8 +3,8 @@
 	@foreach(var item in chooseNumbers)
 	{
 		
-			<input type="checkbox" class="keno-button" @bind="item.IsSelected" @onclick="ChosenNumber"/>
-		<label>@item.MyNumbers</label>
+			<input type="checkbox" class="keno-button" @bind="item.IsSelected" @onclick="ChosenNumber" id="keno"/>
+		<label for="keno">@item.MyNumbers</label>
 
 			}
 
