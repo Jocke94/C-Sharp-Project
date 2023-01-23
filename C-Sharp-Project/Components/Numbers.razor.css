@@ -6,7 +6,6 @@
     vertical-align: middle;
     border: 1px solid #ddd;
     appearance: none;
-   
     outline: none;
     cursor: pointer;
 }
@@ -15,17 +14,8 @@
     background-color: orange;
 }
 
-
-
-.row {
-    max-width: 65rem;
-    width: 100%;
-    margin: 2rem auto;
-    padding: 5rem;
-    background: #fff;
-    border: 0.3rem solid #34495e;
-}
-
-.container {
-    padding: 40px;
+label {
+    width: 20px;
+    margin:0 3px 0;
+  
 }

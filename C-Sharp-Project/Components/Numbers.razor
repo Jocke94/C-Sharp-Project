@@ -1,22 +1,20 @@
 ﻿<h3>KENO</h3>
-	<div class="container">
-	<div class="row">
+	
 	@foreach(var item in chooseNumbers)
 	{
-
+		
 			<input type="checkbox" class="keno-button" @bind="item.IsSelected" @onclick="ChosenNumber"/>
-			<label>@item.MyNumbers</label>
-	}
-	
+		<label>@item.MyNumbers</label>
+
+			}
+
 @foreach (var item in chooseNumbers.Where(n => n.IsSelected))
 {
 	
-
-	
 	<p>@item.MyNumbers</p>
+	
 
 }
-
 
 @code
 		{
@@ -25,15 +23,23 @@
 			private void ChosenNumber()
 			{
 				var selectedNumber = chooseNumbers.Count(n => n.IsSelected);
-				if (selectedNumber > 11)
+	
+				try
 				{
-					Console.WriteLine("Du får endast välja 11 nummer");
+
+					if (selectedNumber > 11)
+					{
+						Console.WriteLine("Du får endast välja 11 nummer");
+
+					}
 				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
+	
 			}
-		 
 	}
 
-	</div>
-</div>
 
 		
