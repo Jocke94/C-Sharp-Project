@@ -1,14 +1,22 @@
-﻿namespace C_Sharp_Project.Components
+﻿using System.ComponentModel;
+
+namespace C_Sharp_Project.Components
 {
 	public partial class Numbers
 	{
-		public int MyNumbers { get; set; }
 		
-		public void ChosenNumber(int number)
+		//en klass som heter ListItem
+		public class ListItem
 		{
-			Console.WriteLine("The chosen number is: " + number);
+			//som har två properties 
+			public int MyNumbers { get; set; }
+			public bool IsSelected { get; set; }
 		}
-	}
-}
+		
 
+
+
+		
+		}
+}
 
