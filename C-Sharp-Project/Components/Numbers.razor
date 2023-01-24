@@ -3,15 +3,26 @@
 	@foreach(var item in chooseNumbers)
 	{
 		
-			<input type="checkbox" class="hidden keno-checkbox" @bind="item.IsSelected" @onclick="ChosenNumber" value="@item.MyNumbers" id="keno-@item.MyNumbers"/>
-	<label for="keno-@item.MyNumbers" class="round-button">@item.MyNumbers</label>
-	
-	
-			}
+		<input type="checkbox" class="hidden keno-checkbox" @bind="@item.IsSelected" @onclick="ChosenNumber" id="keno-@item.MyNumbers"/>
+		<label for="keno-@item.MyNumbers" class="round-button">@item.MyNumbers</label>
+	@if (item.IsSelected)
+
+		{
+			<input type="checkbox" @bind="@item.IsSelected" disabled/>
+		}
+		else
+		{
+			<input type="checkbox" @bind="@item.IsSelected"/>
+		}
+
+	}
 </div>
+
+		
+
 @foreach (var item in chooseNumbers.Where(n => n.IsSelected))
 {
-	
+
 	<p>@item.MyNumbers</p>
 
 }
@@ -19,28 +30,32 @@
 
 
 @code
+{
+	private List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
+
+	private void ChosenNumber()
+	{
+		var selectedNumber = chooseNumbers.Count(n => n.IsSelected);
+
+		try
 		{
-			private List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
 
-			private void ChosenNumber()
+			if (selectedNumber > 11)
 			{
-				var selectedNumber = chooseNumbers.Count(n => n.IsSelected);
-	
-				try
-				{
+				Console.WriteLine("Du får endast välja 11 nummer");
 
-					if (selectedNumber > 11)
-					{
-						Console.WriteLine("Du får endast välja 11 nummer");
-
-					}
-				}
-				catch (Exception e)
-				{
-					Console.WriteLine(e.Message);
-				}
-	
 			}
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+		}
+
+	}
+
+	
+
+
 	}
 
 

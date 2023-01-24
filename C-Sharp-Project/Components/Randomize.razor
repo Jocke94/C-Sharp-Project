@@ -1,21 +1,24 @@
 ﻿
 
 
-<div class="container">
-	<div class="row">
+
+	
 		<button class="btn-randomize" type="button" @onclick="GenerateRandomNumbers"><h4 class="keno">keno</h4></button>
-		
-@if (randomNumbers.Count > 0)
+	
+
+		@if (randomNumbers.Count > 0)
 		{
+			<div class="row">
 			@for (int i= 0; i < randomNumbers.Count; i++)
 				
-			{
+			{	
 				<button class="round-button">@randomNumbers[i]</button>
-				
+		
 			}
+	</div>
 		}
 		
-</div> 
-</div>
 
+
+<br />
 <br />
