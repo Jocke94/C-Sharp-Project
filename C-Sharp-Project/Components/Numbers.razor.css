@@ -13,6 +13,10 @@
   
 }
 
+.hidden {
+    display: none;
+ 
+}
 
 
 .round-button {
@@ -24,13 +28,23 @@
     border-radius: 25px;
     background-color: olivedrab;
     margin: 5px 5px;
+   cursor: pointer;
 }
-.keno-button:checked {
-    background-color: orange;
-}
-.keno-button:hover {
-    transform: rotateY(180deg);
+
+.round-button:hover {
+    background-color:chocolate;
     box-shadow: 0 0 5px orange;
 }
 
+input:checked {
+    background-color: gray;
+}
 
+.row {
+    max-width: 50rem;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 3rem;
+    background: #fff;
+    border: 0.3rem solid #34495e;
+}
