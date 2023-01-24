@@ -1,0 +1,24 @@
+﻿.keno-button {
+    width: 3rem;
+    height: 3rem;
+    background-color: olivedrab;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    z-index: 1;
+  
+}
+
+.keno-button:checked {
+    background-color: orange;
+}
+.keno-button:hover {
+    transform: rotateY(180deg);
+    box-shadow: 0 0 5px orange;
+}
+
+

@@ -1,0 +1,45 @@
+﻿<h3>KENO</h3>
+	
+	@foreach(var item in chooseNumbers)
+	{
+		
+			<input type="checkbox" class="keno-button" @bind="item.IsSelected" @onclick="ChosenNumber" id="keno"/>
+		<label for="keno">@item.MyNumbers</label>
+
+			}
+
+@foreach (var item in chooseNumbers.Where(n => n.IsSelected))
+{
+	
+	<p>@item.MyNumbers</p>
+	
+
+}
+
+@code
+		{
+			private List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
+
+			private void ChosenNumber()
+			{
+				var selectedNumber = chooseNumbers.Count(n => n.IsSelected);
+	
+				try
+				{
+
+					if (selectedNumber > 11)
+					{
+						Console.WriteLine("Du får endast välja 11 nummer");
+
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+				}
+	
+			}
+	}
+
+
+		
