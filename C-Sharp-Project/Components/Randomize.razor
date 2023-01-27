@@ -1,6 +1,4 @@
 ﻿
-
-
 		<button class="btn-randomize" type="button" @onclick="GenerateRandomNumbers"><h4 class="keno">keno</h4></button>
 	
 
@@ -15,8 +13,27 @@
 			}
 	</div>
 		}
-		
+
+@code {
+    private List<int> randomNumbers = new List<int>();
+
+    public void GenerateRandomNumbers()
+    {
+        randomNumbers.Clear();
+        Random rnd = new Random();
+        Console.WriteLine("Kenos lottonummer är: ");
+
+        while (randomNumbers.Count < 20)
+        {
+            MyRandom = rnd.Next(1, 71);
+            if (!randomNumbers.Contains(MyRandom))
+                randomNumbers.Add(MyRandom);
+        }
+        Console.WriteLine(String.Join(", ", randomNumbers));
 
 
+    }
+}
+}
 <br />
 <br />
