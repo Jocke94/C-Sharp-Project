@@ -1,30 +1,23 @@
 ﻿
 <h3>KENO</h3>
 <h4>Välj vilka nummer du vill spela med. (Obs. max 11 nummer)</h4>
-
+<p>Antal valda nummer: @chooseNumbers.Where(n => n.IsSelected).Count() av 11</p>
 <div class="row">
 
-	<h3>@selectedCount av @MaxNumber nummer valda</h3>
+	
 	@foreach (var item in chooseNumbers)
-		
-		
 	{
-		<input type="checkbox" class="hidden keno-checkbox" @bind="@item.IsSelected" @onclick="ChosenNumber" id="keno-@item.MyNumbers"/>
+		<input type="checkbox" class="hidden" @bind="@item.IsSelected" id="keno-@item.MyNumbers">
 		@if (item.IsSelected)
-			
 		{
-
-			<input type="checkbox" class="hidden" @bind="@item.IsSelected" @onclick="ChosenNumber">
+			<input type="checkbox" class="hidden" @bind="@item.IsSelected">
 			<label for="keno-@item.MyNumbers" style="background-color: red" class="round-button">@item.MyNumbers</label>
 		}
 		else
 		{
-			<input type="checkbox" class="hidden" @bind="@item.IsSelected"/>
-			<label for="keno-@item.MyNumbers" class="round-button">@item.MyNumbers</label>
+			<input type="checkbox" class="hidden" @bind="@item.IsSelected">
+			<label for="keno-@item.MyNumbers"  class="round-button">@item.MyNumbers</label>
 		}
-
-	
-	
 	}
 
 
@@ -33,9 +26,10 @@
 <h3>Valda nummer: </h3>
 @foreach (var number in chooseNumbers.Where(n => n.IsSelected))
 {
-	<p>@number.MyNumbers</p>	
-	
+	<p>@number.MyNumbers</p>
 }
+
+
 
 
 
@@ -43,28 +37,8 @@
 {
 
 	private List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
-	private int selectedCount { get; set; } = 0;
-	private int MaxNumber { get; set; } = 11;
-	
 
-	private void ChosenNumber()
 
-	{
-		foreach (var number in chooseNumbers.Where(n => n.IsSelected))
-		if (!chooseNumbers.Contains(number))
-				chooseNumbers.Add(number);
-				selectedCount++;
-		Console.WriteLine(selectedCount);
-	}	
-	
-	
-	
-	//else if (chooseNumbers[i].IsSelected)
-			//{
-			//	chooseNumbers[i].IsSelected = false;
-			//	selectedCount--;
-			//	Console.WriteLine("Valda element:", selectedCount);
-		
 	}
 	
 
