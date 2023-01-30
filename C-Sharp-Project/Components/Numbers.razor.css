@@ -4,6 +4,13 @@
     display: none;
  
 }
+h3{
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 12px;
+}
 
 
 .round-button {
