@@ -7,6 +7,10 @@
 	
 	@foreach (var item in chooseNumbers)
 	{
+		@if (chooseNumbers.Where(n => n.IsSelected).Count() >= 11 && !item.IsSelected)
+		{
+			<input type="checkbox" class="hidden" @bind="@item.IsSelected" id="keno-@item.MyNumbers" disabled>
+		}
 		<input type="checkbox" class="hidden" @bind="@item.IsSelected" id="keno-@item.MyNumbers">
 		@if (item.IsSelected)
 		{
@@ -20,8 +24,6 @@
 		}
 	}
 
-
-	
 </div>
 <h3>Valda nummer: </h3>
 @foreach (var number in chooseNumbers.Where(n => n.IsSelected))
@@ -32,9 +34,8 @@
 
 @code
 {
-	private List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
+	public List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
+
+	public List<int> namn = new List<int>() { 12, 13 };
+
 }
-	
-
-	
-

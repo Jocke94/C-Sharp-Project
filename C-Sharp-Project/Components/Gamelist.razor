@@ -1,7 +1,19 @@
-﻿<h3>Gamelist</h3>
+﻿@inherits Numbers
+
+<h3>Gamelist</h3>
+
+<button @onclick="TestMethod">Test på gamelist</button>
 
 
 
+@code
+{
+	public void TestMethod()
+	{
 
-
-
+		@foreach (var number in chooseNumbers.Where(n => n.IsSelected))
+		{
+			Console.WriteLine(number.MyNumbers);
+		}
+	}
+}
