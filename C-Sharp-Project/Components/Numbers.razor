@@ -60,7 +60,31 @@
 	int money = 1000;
 	Random rnd = new Random(); // flytta?
 
-
+	int[][] winArray = new int[][]
+	{
+			new int[] { 10 },
+			new int[] { 170 },
+			new int[] { 0, 30 },
+			new int[] { 40, 240 },
+			new int[] { 0, 5, 60 },
+			new int[] { 25, 50, 400 },
+			new int[] { 0, 5, 10, 120 },
+			new int[] { 30, 30, 60, 800 },
+			new int[] { 0, 0, 5, 40, 800 },
+			new int[] { 30, 15, 30, 150, 2500 },
+			new int[] { 0, 0, 5, 15, 90, 1700 },
+			new int[] { 30, 10, 15, 50, 300, 10000 },
+			new int[] { 0, 0, 0, 5, 50, 400, 10000 },
+			new int[] { 30, 10, 10, 30, 150, 1000, 25000 },
+			new int[] { 0, 0, 0, 5, 15, 100, 1000, 45000 },
+			new int[] { 30, 10, 10, 15, 30, 300, 2000, 130000 },
+			new int[] { 0, 0, 0, 0, 5, 50, 250, 5000, 250000 },
+			new int[] { 15, 10, 10, 10, 15, 100, 500, 10000, 600000 },
+			new int[] { 0, 0, 0, 0, 5, 15, 100, 800, 15000, 1000000 },
+			new int[] { 30, 10, 10, 10, 15, 50, 200, 1600, 30000, 2000000 },
+			new int[] { 0, 0, 0, 0, 5, 10, 30, 200, 2000, 80000, 5000000 },
+			new int[] { 30, 10, 10, 10, 15, 15, 100, 500, 4000, 160000, 20000000 }
+	};
 
 	public void GenerateRandomNumbers() //Generar 20 nummer om spelaren har råd att spela
 	{
@@ -70,6 +94,7 @@
 
 		if (money >= bet && !game)
 		{
+			game = true;
 			money -= bet;
 			randomNumbers.Clear();
 
@@ -84,6 +109,7 @@
 
 			Console.WriteLine(String.Join(", ", randomNumbers)); // ta bort?
 			Compare();	//Spelet fortsätter
+
 		}
 		else
 			Console.WriteLine("Inte tillräckligt med pengar!!!"); //HTML!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -102,7 +128,7 @@
 
 		if (kingKeno)	//Ett av de 20 random nr blir kung keno
 		{
-			int random = rnd.Next(1, 21);
+			int random = rnd.Next(0, 20);
 			int kingKenoNumber = randomNumbers[random];
 			Console.WriteLine("King keno number: " + kingKenoNumber);
 
@@ -113,10 +139,32 @@
 					hasKingKeno = true;
 				}
 		}
+
+		Console.WriteLine("test test test" + chooseNumbers.Where(n => n.IsSelected).Count());
+
+		money += CalculateWin(pairs, hasKingKeno);
+		game = false;
+		Console.WriteLine("Money: " + money);
 	}
 
-	public void CalculateWin()
+	public int CalculateWin(int pairs, bool hasKingKeno) //Räknar ut eventuell vinst
 	{
+		int count = chooseNumbers.Where(n => n.IsSelected).Count();
+		if (pairs > 0)
+		{
+			if (hasKingKeno)
+			{
+				Console.WriteLine("Money + " + winArray[count * 2 - 1][pairs - 1]);
+				return winArray[count * 2 - 1][pairs - 1];
+			}
+			else
+			{
+				Console.WriteLine("Money + " + winArray[count * 2 - 2][pairs - 1]);
+				return winArray[count * 2 - 2][pairs - 1];
+			}
+		}
+		else
+			return 0;
 		
 	}
 
