@@ -5,12 +5,17 @@
     width: 50px;
     height: 50px;
     border-radius: 25px;
+    border: 0.12rem solid #264d16;
     background-color: olivedrab;
+    background: radial-gradient(circle at 65% 15%, white 0.5px, #B8E2A3 10%, #42A341 40%, #074C00 80%);
     margin: 5px 5px;
+    cursor: pointer;
     color: white;
-   
 }
 
+    .round-button:hover {
+        box-shadow: 0 0 7px orange;
+    }
 
 
 .row {

@@ -1,8 +1,9 @@
 ﻿
 <h3 class="keno-text">KENO</h3>
-<h4>Välj vilka nummer du vill spela med. (Obs. max 11 nummer)</h4>
-<!--Där varje nummer är valt, räknas det upp och presenteras i en p-tagg-->
-
+<div class="wrap-around">
+<h4 class="choose-text">Välj vilka nummer du vill spela med. (Obs. max 11 nummer)</h4>
+</div>
+<!--Där varje nummer är valt, räknas det upp och presenteras-->
 <div class="wrap"><h3 class="numbers-left">Antal valda nummer: @chooseNumbers.Where(n => n.IsSelected).Count() av 11</h3></div>
 <div class="row">
 
@@ -29,7 +30,9 @@
 
 	@foreach (var number in chooseNumbers.Where(n => n.IsSelected))
 	{
-		<p>@number.MyNumbers</p>
+		<div class="wrap-around-present">
+		<p class="present">@number.MyNumbers</p>
+		</div>
 	}
 	
 </div>
