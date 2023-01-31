@@ -1,17 +1,19 @@
 ﻿
 <h3>KENO</h3>
 <h4>Välj vilka nummer du vill spela med. (Obs. max 11 nummer)</h4>
+<!--Där varje nummer är valt, räknas det upp och presenteras i en p-tagg->
 <p>Antal valda nummer: @chooseNumbers.Where(n => n.IsSelected).Count() av 11</p>
 <div class="row">
 
 	
+//foreach loop där if visar när ett nummer är valt och else när man trycker bort numret igen
 	@foreach (var item in chooseNumbers)
 	{
 		<input type="checkbox" class="hidden" @bind="@item.IsSelected" id="keno-@item.MyNumbers">
 		@if (item.IsSelected)
 		{
 			<input type="checkbox" class="hidden" @bind="@item.IsSelected">
-			<label for="keno-@item.MyNumbers" style="background-color: red" class="round-button">@item.MyNumbers</label>
+			<label for="keno-@item.MyNumbers" style="background-color: orange" class="round-button">@item.MyNumbers</label>
 		}
 		else
 		{
@@ -19,21 +21,27 @@
 			<label for="keno-@item.MyNumbers"  class="round-button">@item.MyNumbers</label>
 		}
 	}
+	
+	<!--För varje nummer som är valt, presenteras det i en p-tagg->
+	<h3>Valda nummer: </h3>
 
-
+	@foreach (var number in chooseNumbers.Where(n => n.IsSelected))
+	{
+		<p>@number.MyNumbers</p>
+	}
 	
 </div>
-<h3>Valda nummer: </h3>
-@foreach (var number in chooseNumbers.Where(n => n.IsSelected))
-{
-	<p>@number.MyNumbers</p>
-}
+
 
 
 @code
 {
-	private List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
+	//Skapar en lista med objekt av typen "ListItem" med egenskapen "MyNumbers"
+	public List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
+	
 }
+
+
 	
 
 	
