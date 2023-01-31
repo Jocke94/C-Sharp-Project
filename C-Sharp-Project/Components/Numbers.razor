@@ -4,7 +4,6 @@
 <p>Antal valda nummer: @chooseNumbers.Where(n => n.IsSelected).Count() av 11</p>
 <div class="row">
 
-	
 	@foreach (var item in chooseNumbers)
 	{
 		@if (chooseNumbers.Where(n => n.IsSelected).Count() >= 11 && !item.IsSelected)
@@ -26,16 +25,99 @@
 
 </div>
 <h3>Valda nummer: </h3>
+
+
 @foreach (var number in chooseNumbers.Where(n => n.IsSelected))
 {
 	<p>@number.MyNumbers</p>
 }
 
 
+<!-- NUMBERS -->
+<button class="btn-randomize" type="button" @onclick="GenerateRandomNumbers"><h4 class="keno">keno</h4></button>
+
+
+@if (randomNumbers.Count > 0)
+{
+	<div class="row">
+		@for (int i = 0; i < randomNumbers.Count; i++)
+
+		{
+			<button class="round-button">@randomNumbers[i]</button>
+		}
+	</div>
+}
+
+
 @code
 {
+	//Skapar en lista med objekt av typen ”ListItem” med egenskapen ”MyNumbers”
 	public List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
+	public List<int> randomNumbers = new List<int>();
+	bool kingKeno = true;	//Om spelaren vill spela kung keno (dubbel insats)
+	bool game = false; //Bestämmer om spelet är aktivt
+	int cost = 5;
+	int money = 1000;
+	Random rnd = new Random(); // flytta?
 
-	public List<int> namn = new List<int>() { 12, 13 };
+
+
+	public void GenerateRandomNumbers() //Generar 20 nummer om spelaren har råd att spela
+	{
+		int bet = cost;
+		if (kingKeno)
+			bet = cost * 2;
+
+		if (money >= bet && !game)
+		{
+			money -= bet;
+			randomNumbers.Clear();
+
+			Console.WriteLine("Kenos lottonummer är: "); //bort?
+
+			while (randomNumbers.Count < 20)
+			{
+				int random = rnd.Next(1, 71);
+				if (!randomNumbers.Contains(random))
+					randomNumbers.Add(random);
+			}
+
+			Console.WriteLine(String.Join(", ", randomNumbers)); // ta bort?
+			Compare();	//Spelet fortsätter
+		}
+		else
+			Console.WriteLine("Inte tillräckligt med pengar!!!"); //HTML!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	}
+
+	public void Compare()	
+	{
+		bool hasKingKeno = false;
+		int pairs = 0;
+		foreach (var selectedNumber in chooseNumbers.Where(n => n.IsSelected))  //Jämför spelarens valda nr med de 20 random genererade
+			if (randomNumbers.Contains(selectedNumber.MyNumbers))
+				pairs++;
+
+		Console.WriteLine(pairs + " par");
+
+		if (kingKeno)	//Ett av de 20 random nr blir kung keno
+		{
+			int random = rnd.Next(1, 21);
+			int kingKenoNumber = randomNumbers[random];
+			Console.WriteLine("King keno number: " + kingKenoNumber);
+
+			foreach (var selectedNumber in chooseNumbers.Where(n => n.IsSelected))
+				if (selectedNumber.MyNumbers == kingKenoNumber)
+				{
+					Console.WriteLine("Player has king keno!");
+					hasKingKeno = true;
+				}
+		}
+	}
+
+	public void CalculateWin()
+	{
+		
+	}
 
 }
