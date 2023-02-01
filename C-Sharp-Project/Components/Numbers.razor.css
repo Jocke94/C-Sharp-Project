@@ -102,5 +102,6 @@ h4 {
   font-size: 12px;
   display: flex;
   padding: 10px;
-  margin-top: 20px;
+  justify-content: center;
+  margin: 20px;
 }
