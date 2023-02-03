@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace C_Sharp_Project.Components
+﻿namespace C_Sharp_Project.Components
 {
 
 	public partial class Numbers

@@ -1,14 +1,20 @@
-﻿
-<h3 class="keno-text">KENO</h3>
-<div class="wrap-around">
-	<h4>Välj vilka nummer du vill spela med. (Obs. max 11 nummer)</h4>
+﻿<div class="center">
+	<img class="logo" src="keno.png" alt="Keno logo"/>
+</div>
+
+<div class="center">
+	<div class="wrap-around">
+		<h4>Välj vilka nummer du vill spela med. (Obs. max 11 nummer)</h4>
+	</div>
 </div>
 <!--Där varje nummer är valt, räknas det upp och presenteras-->
 <div class="wrap">
 	<h3 class="numbers-left">Antal valda nummer: @chooseNumbers.Where(n => n.IsSelected).Count() av 11</h3>
 	<h3 class="numbers-left">Pengar: @money</h3>
-	<input type="checkbox" id="king-checkbox" @bind="@kingKeno" unchecked>
-	<label for="king-checkbox" class="numbers-left">Spela kung keno?</label>
+	<div class="center">
+		<input type="checkbox" id="king-checkbox" @bind="@kingKeno" unchecked>
+		<label for="king-checkbox" class="numbers-left">Spela kung keno?</label>
+	</div>
 </div>
 
 
@@ -35,8 +41,9 @@
 
 </div>
 <!--En knapp med en händelsehanterare som kallar på metoden "GenerateRandomNumbers" när knappen är tryckt-->
-<button class="btn-randomize" type="button" @onclick="GenerateRandomNumbers"><h4 class="keno">Starta Spel</h4></button>
-
+<div class="center">
+	<button class="btn-randomize" type="button" @onclick="GenerateRandomNumbers"><h4 class="keno">Keno</h4></button>
+</div>
 
 @if (randomNumbers.Count > 0)
 {
@@ -71,13 +78,14 @@
 					<button class="round-button">@randomNumbers[i]</button>
 				}
 		}
+
 		@if (wins > 0)
 		{
-			<p>@pairs rätt. Grattis, du vann: @wins kr!</p>
+			<p>@pairs/@chosenList.Count() rätt. <span class="win">Grattis, du vann: @wins kr!</span></p>
 		}
 		else
 		{
-			<p>@pairs rätt. Tyvärr, ingen vinst.</p>
+			<p>@pairs/@chosenList.Count() rätt. <span class="loss">Tyvärr, ingen vinst.</span></p>
 		}
 	</div>
 }

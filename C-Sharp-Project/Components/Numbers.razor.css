@@ -2,6 +2,11 @@
     font-size: 8px;
 }
 
+.logo {
+    width: 300px;
+    height: 100px;
+}
+
 .wrap-around {
     display: flex;
     max-width: 50rem;
@@ -83,6 +88,19 @@ h4 {
     box-shadow: 5px 5px 5px grey;
 }
 
+.center {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+}
+.center input {
+    position: relative;
+    left: 37px;
+}
+
+
 .present {
     font-size: 12px;
     margin: auto;
@@ -144,4 +162,11 @@ h4 {
 .keno {
     font-size: 14px;
     letter-spacing: 2px;
+}
+
+.win {
+    color: #2c9b00;
+}
+.loss {
+    color: #ba0000;
 }
