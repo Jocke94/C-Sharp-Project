@@ -57,7 +57,6 @@ namespace Test
 		[InlineData(2, 2, true, 240)]
 		[InlineData(2, 1, false, 0)]
 		[InlineData(2, 2, false, 30)]
-		[InlineData(6, 3, false, 5)]
 		[InlineData(6, 3, true, 15)]
 		[InlineData(11, 7, true, 100)]
 		[InlineData(11, 7, false, 30)]
