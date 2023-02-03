@@ -1,5 +1,6 @@
 ﻿
-		<button class="btn-randomize" type="button" @onclick="GenerateRandomNumbers"><h4 class="keno">keno</h4></button>
+<!--En knapp med en händelsehanterare som kallar på metoden "GenerateRandomNumbers" när knappen är tryckt-->		
+<button class="btn-randomize" type="button" @onclick="GenerateRandomNumbers"><h4 class="keno">keno</h4></button>
 	
 
 		@if (randomNumbers.Count > 0)
@@ -15,9 +16,9 @@
 		}
 
 @code {
-    
+    //En lista som kallas "randomNumbers" som genererar 70 slumpmässiga nummer
     private List<int> randomNumbers = new List<int>();
-
+    //metod
     public void GenerateRandomNumbers()
     {
         randomNumbers.Clear();
