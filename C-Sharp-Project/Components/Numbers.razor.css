@@ -1,9 +1,50 @@
-﻿.hidden {
-    display: none;
- 
+﻿.choose-text {
+    font-size: 8px;
 }
-h3{
-    font-size: 20px;
+
+.wrap-around {
+    display: flex;
+    max-width: 50rem;
+    width: 8rem;
+    background-color: #d6eba2;
+    margin: 10px;
+    justify-content: left;
+    padding: 3px 3px 0px 6px;
+}
+
+.keno-text {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: orange;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.numbers-left {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 5px;
+}
+
+
+.wrap {
+    max-width: 50rem;
+    width: 12rem;
+    margin: 20px auto;
+    background-color: #f3b037;
+    border: 0.2rem solid #34495e;
+    justify-content: center;
+    box-shadow: 5px 5px 5px grey;
+}
+
+.hidden {
+    display: none;
+}
+
+h3 {
+    font-size: 14px;
 }
 
 h4 {
@@ -26,13 +67,10 @@ h4 {
     color: white;
 }
 
-.round-button:hover {
-    box-shadow: 0 0 7px orange;
-}
+    .round-button:hover {
+        box-shadow: 0 0 7px orange;
+    }
 
-input:checked {
-    color: grey;
-}
 
 .row {
     max-width: 50rem;
@@ -42,33 +80,24 @@ input:checked {
     background: #fff;
     border: 0.3rem solid #34495e;
     justify-content: center;
+    box-shadow: 5px 5px 5px grey;
 }
 
+.present {
+    font-size: 12px;
+    margin: auto;
+}
 
-
-
-.round-button {
+.chosen-numbers {
+    font-size: 12px;
     display: flex;
-    align-items: center;
+    padding: 10px;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    background-color: olivedrab;
-    margin: 5px 5px;
-    color: white;
+    margin: 20px;
 }
 
-
-
-.row {
-    max-width: 50rem;
-    width: 100%;
-    margin: 2rem auto;
-    padding: 10px;
-    background: #fff;
-    border: 0.3rem solid #34495e;
-    justify-content: center;
+.container {
+    padding: 20px;
 }
 
 .container {
@@ -91,25 +120,25 @@ input:checked {
     transition: 0.5s;
 }
 
-    .btn-randomize:after {
-        content: '\2193';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-        font-size: 32px;
-    }
+.btn-randomize:after {
+    content: '\2193';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    font-size: 32px;
+}
 
-    .btn-randomize:hover {
-        padding-right: 24px;
-        padding-left: 8px;
-    }
+.btn-randomize:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+}
 
-        .btn-randomize:hover:after {
-            opacity: 1;
-            right: 10px;
-        }
+.btn-randomize:hover:after {
+    opacity: 1;
+    right: 10px;
+}
 
 
 .keno {
