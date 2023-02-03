@@ -34,12 +34,10 @@ namespace Test
 			{
 				if (hasKingKeno)
 				{
-					Console.WriteLine("Money + " + winArray[count * 2 - 1][pairs - 1]);
 					return winArray[count * 2 - 1][pairs - 1];
 				}
 				else
 				{
-					Console.WriteLine("Money + " + winArray[count * 2 - 2][pairs - 1]);
 					return winArray[count * 2 - 2][pairs - 1];
 				}
 			}
