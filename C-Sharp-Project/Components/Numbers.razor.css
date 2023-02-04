@@ -1,0 +1,172 @@
+﻿.choose-text {
+    font-size: 8px;
+}
+
+.logo {
+    width: 300px;
+    height: 100px;
+}
+
+.wrap-around {
+    display: flex;
+    max-width: 50rem;
+    width: 8rem;
+    background-color: #d6eba2;
+    margin: 10px;
+    justify-content: left;
+    padding: 3px 3px 0px 6px;
+}
+
+.keno-text {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: orange;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.numbers-left {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 5px;
+}
+
+
+.wrap {
+    max-width: 50rem;
+    width: 12rem;
+    margin: 20px auto;
+    background-color: #f3b037;
+    border: 0.2rem solid #34495e;
+    justify-content: center;
+    box-shadow: 5px 5px 5px grey;
+}
+
+.hidden {
+    display: none;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+h4 {
+    font-size: 12px;
+}
+
+
+.round-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: 0.12rem solid #264d16;
+    background-color: olivedrab;
+    background: radial-gradient(circle at 65% 15%, white 0.5px, #B8E2A3 10%, #42A341 40%, #074C00 80%);
+    margin: 5px 5px;
+    cursor: pointer;
+    color: white;
+}
+
+    .round-button:hover {
+        box-shadow: 0 0 7px orange;
+    }
+
+
+.row {
+    max-width: 50rem;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border: 0.3rem solid #34495e;
+    justify-content: center;
+    box-shadow: 5px 5px 5px grey;
+}
+
+.center {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+}
+.center input {
+    position: relative;
+    left: 37px;
+}
+
+
+.present {
+    font-size: 12px;
+    margin: auto;
+}
+
+.chosen-numbers {
+    font-size: 12px;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.btn-randomize {
+    border-radius: 4px;
+    background-color: chocolate;
+    text-transform: uppercase;
+    border: none;
+    color: #fff;
+    padding: 16px;
+    width: 100px;
+    transition: all 0.3s;
+    cursor: pointer;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    cursor: pointer;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn-randomize:after {
+    content: '\2193';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    font-size: 32px;
+}
+
+.btn-randomize:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+}
+
+.btn-randomize:hover:after {
+    opacity: 1;
+    right: 10px;
+}
+
+
+.keno {
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.win {
+    color: #2c9b00;
+}
+.loss {
+    color: #ba0000;
+}
