@@ -1,0 +1,42 @@
+﻿.logo {
+    width: 300px;
+    height: 100px;
+}
+
+.center {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.center-confirm {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 80px;
+}
+
+.center-confirm h1 {
+    font-size: 30px;
+}
+
+.btn {
+    width: 100px;
+    margin: auto;
+}
+.rules-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+    
+.rules {
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 80px;
+}
