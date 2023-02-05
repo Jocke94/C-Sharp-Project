@@ -3,7 +3,7 @@
 
 # Instruktioner
 Klona projektet och starta debug.
-OBS kräver .net sdk 7
+OBS kräver .net sdk 7.
 
 # Bilder
 <img src="./img/index.JPG"/>
