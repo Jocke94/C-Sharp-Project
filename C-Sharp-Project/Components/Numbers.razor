@@ -10,13 +10,19 @@
 <!--Där varje nummer är valt, räknas det upp och presenteras-->
 <div class="wrap">
 	<h3 class="numbers-left">Antal valda nummer: @chooseNumbers.Where(n => n.IsSelected).Count() av 11</h3>
-	<h3 class="numbers-left">Pengar: @money</h3>
+	<h3 class="numbers-left">Pengar: @money kr</h3>
 	<div class="center">
 		<input type="checkbox" id="king-checkbox" @bind="@kingKeno" unchecked>
 		<label for="king-checkbox" class="numbers-left">Spela kung keno?</label>
 	</div>
 </div>
 
+@if (money <= 10) //Om pengarna tar slut får man alternativet att fylla på
+{
+	<div class="center">
+		<button class="btn btn-success" @onclick="AddMoney">Fyll på pengar</button>
+	</div>
+}
 
 <div class="row">
 	<!--foreach loop där if visar när ett nummer är valt och else när man trycker bort numret igen-->
@@ -47,24 +53,20 @@
 
 @if (randomNumbers.Count > 0)
 {
-	List<int> chosenList = new List<int>();	//lista för att jämföra nummer
 	bool kingBool = false; //om kung keno har renderats ut
 	<div class="row">
-		@foreach (var number in chooseNumbers.Where(n => n.IsSelected))
-			chosenList.Add(number.MyNumbers);
-
 		@for (int i = 0; i < randomNumbers.Count; i++)	
 		{
 			bool added = false;
-			for (int j = 0; j < chosenList.Count; j++) // Bollarna visas i olika färger beroende på om man har valt rätt
+			for (int j = 0; j < staticChooseNumbers.Count; j++) // Bollarna visas i olika färger beroende på om man har valt rätt
 			{
-				if (chosenList[j] == randomNumbers[i] && chosenList[j] == kingKenoNumber && !kingBool)
+				if (staticChooseNumbers[j] == randomNumbers[i] && staticChooseNumbers[j] == kingKenoNumber && !kingBool)
 				{
 					<button class="round-button" style="background: linear-gradient(100deg, #e41130, #ff9939);">@randomNumbers[i]</button>
 					added = true;
 					kingBool = true;
 				}
-				else if (chosenList[j] == randomNumbers[i])
+				else if (staticChooseNumbers[j] == randomNumbers[i])
 				{
 					<button class="round-button" style="background: linear-gradient(100deg, #e48130, #ff9939);">@randomNumbers[i]</button>
 					added = true;
@@ -79,11 +81,11 @@
 
 		@if (wins > 0)
 		{
-			<p>@pairs/@chosenList.Count() rätt. <span class="win">Grattis, du vann: @wins kr!</span></p>
+			<p>@pairs/@staticChooseNumbers.Count() rätt. <span class="win">Grattis, du vann: @wins kr!</span></p>
 		}
 		else
 		{
-			<p>@pairs/@chosenList.Count() rätt. <span class="loss">Tyvärr, ingen vinst.</span></p>
+			<p>@pairs/@staticChooseNumbers.Count() rätt. <span class="loss">Tyvärr, ingen vinst.</span></p>
 		}
 	</div>
 }
@@ -93,15 +95,16 @@
 {
 	//Skapar en lista med objekt av typen ”ListItem” med egenskapen ”MyNumbers”
 	public List<ListItem> chooseNumbers = Enumerable.Range(1, 70).Select(i => new ListItem { MyNumbers = i }).ToList();
+	public List<int> staticChooseNumbers = new List<int>();
 	public List<int> randomNumbers = new List<int>();
 	bool kingKeno = true;	//Om spelaren vill spela kung keno (dubbel insats)
 	bool game = false; //Bestämmer om spelet är aktivt
 	int cost = 5;
-	int money = 5000;
+	int money = 1000;
 	int wins;
 	int pairs;
 	int kingKenoNumber;
-	Random rnd = new Random(); // flytta?
+	Random rnd = new Random();
 
 	int[][] winArray = new int[][]	//Simulerar vinstplan från riktigt keno
 	{
@@ -128,6 +131,11 @@
 			new int[] { 0, 0, 0, 0, 5, 10, 30, 200, 2000, 80000, 5000000 },
 			new int[] { 30, 10, 10, 10, 15, 15, 100, 500, 4000, 160000, 20000000 }
 	};
+
+	public void AddMoney()
+	{
+		money = 1000;
+	}
 
 	public void GenerateRandomNumbers() //Generar 20 nummer om spelaren har råd att spela
 	{
@@ -172,6 +180,9 @@
 		wins = CalculateWin(pairs, hasKingKeno);
 		money += wins;
 		game = false;
+		staticChooseNumbers.Clear();
+		foreach (var selectedNumber in chooseNumbers.Where(n => n.IsSelected))
+			staticChooseNumbers.Add(selectedNumber.MyNumbers);
 	}
 
 	public int CalculateWin(int pairs, bool hasKingKeno) //Räknar ut eventuell vinst
