@@ -2,8 +2,9 @@
 ### C-Sharp projekt av Joakim Larsson och Filippa Fast.
 
 # Instruktioner
-Klona projektet och starta debug.
-OBS kräver .net sdk 7.
+Klona projektet och starta debug.<br>
+OBS kräver .net sdk 7.<br>
+Shift + f5 kan krävas för att ladda in css.
 
 # Bilder
 <img src="./img/index.JPG"/>
